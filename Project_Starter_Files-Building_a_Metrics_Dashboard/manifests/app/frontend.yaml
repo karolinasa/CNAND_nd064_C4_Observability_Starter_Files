@@ -1,6 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: frontendport
   name: frontend-app
 spec:
   replicas: 3
@@ -24,7 +28,9 @@ spec:
             memory: "256Mi"
             cpu: "256m"
         ports:
-        - containerPort: 8080
+          - name: frontendport
+            containerPort: 8080
+            protocol: TCP
 ---
 apiVersion: v1
 kind: Service
@@ -34,6 +40,28 @@ spec:
   selector:
     app: frontend
   ports:
-    - port: 8080
-      targetPort: 8080
+  - name: frontend
+    protocol: TCP
+    port: 8080
+    targetPort: frontendport
   type: LoadBalancer
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: frontend
+  namespace: monitoring
+  labels:
+    app: frontend
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  endpoints:
+  - port: frontend
+    path: /metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - default

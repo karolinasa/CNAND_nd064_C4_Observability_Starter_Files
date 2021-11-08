@@ -11,10 +11,24 @@
 *TODO:* Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
 ## Describe SLO/SLI
-*TODO:* Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
+SLOs of *monthly uptime* and *request response time* are:
+- Application uptime will be 99.9% in a month
+- 99% of requests will reply within 200 ms of receiving a request in a month
+
+Based on SLOs of *monthly uptime* and *request response time* defined, SLIs are:
+- Last month application uptime was 99.95%
+- Last month 99.2% of requests replied within 200 ms of receiving a request
+
 
 ## Creating SLI metrics.
-*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
+*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs.
+Metrics to measure SLIs defined:
+- The time in ms to reply to a request
+- The number of requests received per second
+- The number of failed requests (40x and 50x responses)
+- The percentage of CPU used
+- The application uptime (both front-end and back-end services)
+
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.

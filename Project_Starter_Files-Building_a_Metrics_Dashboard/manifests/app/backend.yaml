@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-app
+  annotations: 
+    "sidecar.jaegertracing.io/inject": "true"
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: backendport
 spec:
   replicas: 3
   selector:
@@ -13,9 +18,12 @@ spec:
         app: backend
     spec:
       containers:
-      - name: backend
+      - env:
+        - name: JAEGER_HOST
+          value: jaeger-tracing-agent.default.svc.cluster.local
         image: karolinapy/observability-backend:latest
         imagePullPolicy: Always
+        name: backend
         resources:
           requests:
             memory: "128Mi"
@@ -24,7 +32,9 @@ spec:
             memory: "256Mi"
             cpu: "256m"
         ports:
-        - containerPort: 8080
+          - name: backendport
+            containerPort: 8080
+            protocol: TCP
 ---
 apiVersion: v1
 kind: Service
@@ -34,6 +44,28 @@ spec:
   selector:
     app: backend
   ports:
-    - port: 80
-      targetPort: 8080
+  - name: backend
+    protocol: TCP
+    port: 8081
+    targetPort: backendport
   type: LoadBalancer
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: backend
+  namespace: monitoring
+  labels:
+    app: backend
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  endpoints:
+  - port: backend
+    path: /metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - default
