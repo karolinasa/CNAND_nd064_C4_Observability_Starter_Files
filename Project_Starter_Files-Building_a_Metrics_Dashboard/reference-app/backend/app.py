@@ -13,12 +13,15 @@ mongo = PyMongo(app)
 JAEGER_HOST = getenv('JAEGER_HOST', 'localhost')
 metrics = PrometheusMetrics(app)
 
+metrics.info("app_info", "Application info", version="1.0.3")
+
 metrics.register_default(
     metrics.counter(
-        'by_path_counter', 'Request count by request paths',
-        labels={'path': lambda: request.path}
+        'by_endpoint_counter', 'Request count by request endpoint',
+        labels={'endpoint': lambda: request.endpoint}
     )
 )
+
 
 def init_tracer(service):
     logging.getLogger('').handlers = []
@@ -39,6 +42,7 @@ def init_tracer(service):
     )
 
     return config.initialize_tracer()
+
 
 tracer = init_tracer('backend-service')
 
@@ -81,3 +85,4 @@ def add_star():
 
 if __name__ == "__main__":
     app.run()
+    
