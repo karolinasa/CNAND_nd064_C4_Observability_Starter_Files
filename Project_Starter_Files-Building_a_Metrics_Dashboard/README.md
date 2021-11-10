@@ -73,26 +73,46 @@ Using the template below, write a trouble ticket for the developers, to explain 
 
 TROUBLE TICKET
 
-Name:
+Name: Multiple requests returning HTTP 405 Method Not Allowed response
 
-Date:
+Date: 2021-11-10
 
-Subject:
+Subject: Multiple requests returning HTTP 405 Method Not Allowed response
 
-Affected Area:
+Affected Area: Back-end application
 
-Severity:
+Severity: High
 
-Description:
+Description: Starting from today, after code update, we have noticed multiple requests being sent to /star method in 
+back-end application returning HTTP 405 Method Not Allowed response. 
+We have traced back the error to reference-app/backend/app.py file.
 
 
 ## Creating SLIs and SLOs
-We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name three SLIs that you would use to measure the success of this SLO.
+We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. 
+Name three SLIs that you would use to measure the success of this SLO:
+- Error rate (number of 4xx and 5xx responses) in a month is 0.03% of all requests
+- 99.98% of time in a month pods are up
+- 99.97% of requests respond in under 250ms
 
 ## Building KPIs for our plan
 Now that we have our SLIs and SLOs, create KPIs to accurately measure these metrics. We will make a dashboard for this, but first write them down here.
+- Uptime of pods
+- Memory(RAM) usage of pods
+- CPU usage of pods
+- Number of HTTP requests for each response status
+- Average response time of requests
+- Percentage of requests that returned responses under 250ms
 
 ## Final Dashboard
-Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
+Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
 
 [Final dashboard](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/observability-dashboard.png)
+
+The graphs created:
+- Uptime of Pods: showing the status of front-end/back-end pods - green when up, red when down (by timestamp)
+- No of requests/HTTP status: showing a number of requests in time grouped by request response including all types of responses (by timestamp)
+- Average response time - All requests: requests grouped by pod and path and showing an average response time in 30s (by timestamp)
+- Request rate under 250ms: showing a percentage of requests grouped by pod and path that had a response time under 250ms (by timestamp)
+- Memory usage (Pods/default) - showing memory(RAM) usage for each pod in default namespace by timestamp (by timestamp)
+- CPU usage (Pods/default) - showing CPU usage for each pod in default namespace (by timestamp)
