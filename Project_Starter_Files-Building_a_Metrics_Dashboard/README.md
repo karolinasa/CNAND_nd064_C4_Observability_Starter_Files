@@ -21,6 +21,8 @@ Expose Grafana to the internet and then setup Prometheus as a data source. Provi
 
 [Grafana homepage](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/grafana-homepage.png)
 
+[Grafana data sources](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/grafana-data-sources.png)
+
 ## Create a Basic Dashboard
 Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
