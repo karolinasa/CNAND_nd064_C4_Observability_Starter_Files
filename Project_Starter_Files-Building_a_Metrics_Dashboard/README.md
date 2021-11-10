@@ -63,6 +63,7 @@ We will create a Jaeger span to measure the processes on the backend. Once you f
 
 ## Jaeger in Dashboards
 Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
+
 [Jaeger service in Grafana](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/jaeger-datasource-dashboard.png)
 
 ## Report Error
