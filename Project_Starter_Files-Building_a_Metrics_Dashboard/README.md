@@ -54,7 +54,7 @@ Metrics to measure SLIs defined:
 ## Create a Dashboard to measure our SLIs
 Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
 
-[Uptime (1h)](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/uptime.png) 
+[Uptime (24h)](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/uptime.png) 
 
 [HTTP requests (24h)](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/http-requests-by-status.png)
 
@@ -90,19 +90,37 @@ We have traced back the error to reference-app/backend/app.py file.
 
 ## Creating SLIs and SLOs
 We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. 
-Name three SLIs that you would use to measure the success of this SLO:
-- Error rate (number of 4xx and 5xx responses) in a month is 0.03% of all requests
-- 99.98% of time in a month pods are up
-- 99.97% of requests respond in under 250ms
+Name four SLIs that you would use to measure the success of this SLO:
+- Error rate: Error rate (number of 4xx and 5xx responses) in a month is 0.03% of all requests
+- Uptime: Uptime of pods is 99.99% in a month
+- Response rate & time: 99.97% of all requests respond in under 250ms
+- Resources: CPU/Memory usage does not exceed the resources provided
 
 ## Building KPIs for our plan
 Now that we have our SLIs and SLOs, create KPIs to accurately measure these metrics. We will make a dashboard for this, but first write them down here.
-- Uptime of pods
-- Memory(RAM) usage of pods
-- CPU usage of pods
-- Number of HTTP requests for each response status
+
+Error rate:
+- Number of 4xx and 5xx HTTP request responses
+- Number of requests on average
+Those KPIs vere chosen to see all types of responses (as you later see in the dashboard - all in one graph) and to check 
+if there is a correlation between average response time and response status code.
+
+Uptime:
+- Uptime of front-end application pods
+- Uptime of back-end application pods
+Seeing an indicator whether a pod is up or not is the clearest metric we can get. 
+Used both for back-end and front-end applications.
+
+Response rate & time:
 - Average response time of requests
 - Percentage of requests that returned responses under 250ms
+Those metrics were chosen to check if the load of requests correlate to the response time.
+
+Resources:
+- Memory(RAM) usage for application pods
+- CPU usage for application pods
+When checking resources the main metrics to check are CPU and memory(RAM), because lacking those the application 
+may get stuck or not run at all, especially when creating multiple pods.
 
 ## Final Dashboard
 Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
