@@ -13,21 +13,22 @@
 ## Describe SLO/SLI
 SLOs of *monthly uptime* and *request response time* are:
 - Application uptime will be 99.9% in a month
-- 99% of requests will reply within 200 ms of receiving a request in a month
+- 99% of requests will reply within 250 ms of receiving a request in a month
 
 Based on SLOs of *monthly uptime* and *request response time* defined, SLIs are:
 - Last month application uptime was 99.95%
-- Last month 99.2% of requests replied within 200 ms of receiving a request
+- Last month 99.2% of requests replied within 250 ms of receiving a request
 
 
 ## Creating SLI metrics.
 *TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs.
+
 Metrics to measure SLIs defined:
 - The time in ms to reply to a request
 - The number of requests received per second
 - The number of failed requests (40x and 50x responses)
 - The percentage of CPU used
-- The application uptime (both front-end and back-end services)
+- The application uptime
 
 
 ## Create a Dashboard to measure our SLIs

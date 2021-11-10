@@ -1,11 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: frontend
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: /metrics
     prometheus.io/port: frontendport
-  name: frontend-app
+  labels:
+    name: frontend
+    release: prometheus
 spec:
   replicas: 3
   selector:
@@ -35,7 +38,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend
+  labels:
+    app: frontend
 spec:
   selector:
     app: frontend

@@ -1,11 +1,7 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, jsonify
 
 from jaeger_client import Config
-from jaeger_client.metrics.prometheus import PrometheusMetricsFactory
 from opentelemetry import trace
-from opentelemetry.exporter import jaeger
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchExportSpanProcessor
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
 from opentelemetry.sdk.trace import TracerProvider
@@ -25,14 +21,6 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 
 
-#config = Config(
-#        config={},
-#        service_name='your-app-name',
-#        validate=True,
-#        metrics_factory=PrometheusMetricsFactory(service_name_label='your-app-name')
-#)
-#tracer = config.initialize_tracer()
-
 def init_tracer(service):
     logging.getLogger('').handlers = []
     logging.basicConfig(format='%(message)s', level=logging.DEBUG)
@@ -51,7 +39,9 @@ def init_tracer(service):
     # this call also sets opentracing.tracer
     return config.initialize_tracer()
 
+
 tracer = init_tracer('first-service')
+
 
 @app.route('/')
 def homepage():
@@ -65,10 +55,9 @@ def homepage():
                 homepages.append(requests.get(result['company_url']))
             except:
                 return "Unable to get site for %s" % result['company']
-        
-
 
     return jsonify(homepages)
+
 
 if __name__ == "__main__":
     app.run(debug=True,)
