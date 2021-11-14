@@ -6,29 +6,29 @@ Run `kubectl` command to show the running pods and services for all components. 
 
 Pods: 
 
-[Namespace: default](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/pods-default.png) 
+[Namespace: default](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/pods-default.png) 
 
-[Namespace: monitoring](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/pods-monitoring.png) 
+[Namespace: monitoring](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/pods-monitoring.png) 
 
-[Namespace: observability](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/pods-observability.png)
+[Namespace: observability](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/pods-observability.png)
 
 Services: 
 
-[All services](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/services.png)
+[All services](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/services.png)
 
 ## Setup the Jaeger and Prometheus source
 Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
 
-[Grafana homepage](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/grafana-homepage.png)
+[Grafana homepage](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/grafana-homepage.png)
 
-[Grafana data sources](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/grafana-data-sources.png)
+[Grafana data sources](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/grafana-data-sources.png)
 
 ## Create a Basic Dashboard
 Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
-To create a dashboard I used a reference dashboard in the [project repository](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/reference-dashboards/kubernetes-cluster-monitoring-via-prometheus_rev3.json).
+To create a dashboard I used a reference dashboard in the [project repository](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/reference-dashboards/kubernetes-cluster-monitoring-via-prometheus_rev3.json).
 
-[Basic Grafana Dashboard with Prometheus as a source](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/prometheus-datasource-reference-dashboard.png)
+[Basic Grafana Dashboard with Prometheus as a source](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/prometheus-datasource-reference-dashboard.png)
 
 ## Describe SLO/SLI
 SLOs of *monthly uptime* and *request response time* are:
@@ -54,19 +54,19 @@ Metrics to measure SLIs defined:
 ## Create a Dashboard to measure our SLIs
 Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
 
-[Uptime (24h)](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/uptime.png) 
+[Uptime (24h)](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/uptime.png) 
 
-[HTTP requests (24h)](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/http-requests-by-status.png)
+[HTTP requests (24h)](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/http-requests-by-status.png)
 
 ## Tracing our Flask App
 We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here.
 
-[Jaeger traces](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/jaeger-trace.png)
+[Jaeger traces](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/jaeger-trace.png)
 
 ## Jaeger in Dashboards
 Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
 
-[Jaeger service in Grafana](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/jaeger-datasource-dashboard.png)
+[Jaeger service in Grafana](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/jaeger-datasource-dashboard.png)
 
 ## Report Error
 Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue.
@@ -125,7 +125,7 @@ may get stuck or not run at all, especially when creating multiple pods.
 ## Final Dashboard
 Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
 
-[Final dashboard](https://github.com/karolinasa/CNAND_nd064_C4_Observability_Starter_Files/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/observability-dashboard.png)
+[Final dashboard](https://github.com/karolinasa/udacity-observability/tree/master/Project_Starter_Files-Building_a_Metrics_Dashboard/answer-img/observability-dashboard.png)
 
 The graphs created:
 - Uptime of Pods: showing the status of front-end/back-end pods - green when up, red when down (by timestamp)
